@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Excel to SQL</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Excel to SQL</h1>
+        <p>A simple tool for generating psuedo-tables from Excel.</p>
+        
+        <h2>Configuration</h2>
+        <span>DBMS:
+        <select id="dbname" class="form-inline">
+          <option value="oracle">Oracle Database</option>
+          <option value="mssql" selected="selected">Microsoft SQL Server</option>
+          <option value="mysql">MySQL</option>
+        </select>
+        </span>
+        
+        <h2>Paste Excel table here</h2>
+        <p>Include header columns.</p>
+        <textarea class="form-control" rows="5" id="excel"></textarea>
+
+        <h2>Columns</h2>
+          <form class="form-inline">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Column Name</th>
+                  <th scope="col">Alias</th>
+                  <th scope="col"><span data-toggle="tooltip" title="Use {f} as a placeholder for column name." data-placement="top">Template</span</th>
+                </tr>
+              </thead>
+              <tbody id="cols">
+              </tbody>
+            </table>
+          </form>
+
+        <button id="convert" type="button" class="btn btn-lg btn-primary" data-toggle="tooltip" title="Convert Excel to CSV"  data-placement="right" >           
+          <span class="fa fa-file-excel-o"></span>
+          <span class="fa fa-arrow-right"></span>
+          <span class="fa fa-database"></span>
+        </button>
+
+        <h2>SQL Output</h2>
+        <textarea id="sql" rows="30" class="form-control">
+        </textarea>
+      </div>
+    </div>
+  </div>
+
+  <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+  <script  src="js/index.js"></script>
+
+</body>
+
+</html>

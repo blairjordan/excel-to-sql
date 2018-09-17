@@ -14,45 +14,69 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1>Excel to SQL</h1>
-        <p>A simple tool for generating psuedo-tables from Excel.</p>
         
-        <h2>Configuration</h2>
-        <span>DBMS:
-        <select id="dbname" class="form-inline">
-          <option value="oracle">Oracle Database</option>
-          <option value="mssql" selected="selected">Microsoft SQL Server</option>
-          <option value="mysql">MySQL</option>
-        </select>
-        </span>
+        <h1>Excel to SQL Converter</h1>
+        <p>A simple tool for generating psuedo-tables from Excel. I'll expand it as I need extra features.</p>
         
-        <h2>Paste Excel table here</h2>
-        <p>Include header columns.</p>
+        <h2><span class="fa fa-cog"></span> Configuration</h2>
+        <form class="form-inline">
+          <span><span class="fa fa-database"></span> DBMS: </span>
+          <select id="dbname">
+            <option value="oracle">Oracle Database</option>
+            <option value="mssql" selected="selected">Microsoft SQL Server</option>
+            <option value="mysql">MySQL</option>
+          </select>
+        </form>
+        
+        <br />
+        <h2><span class="fa fa-table"></span> Excel Input</h2>
+        <p>Paste Excel table below. Include header columns.</p>
         <textarea class="form-control" rows="5" id="excel"></textarea>
-
-        <h2>Columns</h2>
-          <form class="form-inline">
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Column Name</th>
-                  <th scope="col">Alias</th>
-                  <th scope="col"><span data-toggle="tooltip" title="Use {f} as a placeholder for column name." data-placement="top">Template</span</th>
-                </tr>
-              </thead>
-              <tbody id="cols">
-              </tbody>
-            </table>
-          </form>
-
+  
+        <h2><span class="fa fa-columns"></span> Columns</h2>
+        <form class="form-inline">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Column Name <span class="fa fa-pencil"><span></th>
+                <th scope="col">Alias <span class="fa fa-tag"><span></th>
+                <th scope="col">Type <span class="fa fa-file"><span></th>
+                <th scope="col"><span data-toggle="tooltip" title="Use {f} as a placeholder for column name." data-placement="top">Template <span class="fa fa-code"></span></span></th>
+                <th scope="col"><span data-toggle="tooltip" title="Mark column as key for UPDATE criteria." data-placement="top">Key <span class="fa fa-key"></span></span></th>
+              </tr>
+            </thead>
+            <tbody id="cols">
+            </tbody>
+          </table>
+        </form>
+  
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary active">
+        <input type="radio" name="querytype" value="SELECT" autocomplete="off" checked> <span class="fa fa-asterisk"></span> SELECT
+      </label>
+        
+      <label class="btn btn-secondary">
+        <input type="radio" name="querytype" value="CREATE" autocomplete="off" > <span class="fa fa-plus"></span> CREATE
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="querytype" value="INSERT" autocomplete="off" > <i class="fa fa-indent" aria-hidden="true"></i> INSERT
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="querytype" value="UPDATE" autocomplete="off" > <span class="fa fa-exchange"></span> UPDATE
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="querytype" value="DELETE" autocomplete="off" > <span class="fa fa-times"></span> DELETE
+      </label>
+      </div>
+      <br/>
         <button id="convert" type="button" class="btn btn-lg btn-primary" data-toggle="tooltip" title="Convert Excel to CSV"  data-placement="right" >           
           <span class="fa fa-file-excel-o"></span>
           <span class="fa fa-arrow-right"></span>
           <span class="fa fa-database"></span>
         </button>
-
+  
         <h2>SQL Output</h2>
-        <textarea id="sql" rows="30" class="form-control">
+        <textarea id="sql" rows="20" class="form-control" wrap="soft">
         </textarea>
       </div>
     </div>

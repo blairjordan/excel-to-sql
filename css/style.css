@@ -7,3 +7,8 @@
 button {
   margin: 1em 0;
 }
+
+textarea {
+  white-space: nowrap;  
+  overflow: auto;
+}

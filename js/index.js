@@ -72,7 +72,6 @@ const generateSQL = (table, data, type) => {
   
   $('#sql').empty();
   
-  console.log(getTypes());
   if (type === query_type.CREATE) {
     cols = headerRow.reduce((h, c, i) => {return h += `\t${dbs[db].fieldPrepend}${c}${dbs[db].fieldAppend} AS ${types[i]}${(i+1 ===  headerRow.length) ? '' : ', '}\n`;
     }, '');
@@ -108,7 +107,7 @@ const generateSQL = (table, data, type) => {
       let as = $(`#as-${i}`).val();
       let template = $(`#template-${i}`).val();
       let content = template.replace(/{f}/g , c) || c;
-	  content = `${quote}${quote ? content.replace(/'/g , "''") : content}${quote}`;
+	    content = `${quote}${quote ? content.replace(/'/g , "''") : content}${quote}`;
       as = `${prepend}${as}${append}`;
       let inner = `${as} = ${content}`;
       where += keys.includes(i) ? `${(keys[0] !== i) ? ' AND ' : ''}` + inner : '';
